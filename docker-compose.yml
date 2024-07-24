@@ -1,8 +1,9 @@
 services:
   postgres-bench:
-    image: postgres:16.3-bullseye
+    build: .
+    image: tcph-bench:1
     container_name: postgres-bench
     hostname: postgres-bench
 
-    environment:
-      - POSTGRES_PASSWORD=123mudar
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
