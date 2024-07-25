@@ -1,4 +1,4 @@
--- using 1721416318 as a seed to the RNG
+-- using 1433771997 as a seed to the RNG
 
 
 select
@@ -27,8 +27,8 @@ from
 			and s_nationkey = n1.n_nationkey
 			and c_nationkey = n2.n_nationkey
 			and (
-				(n1.n_name = '' and n2.n_name = '')
-				or (n1.n_name = '' and n2.n_name = '')
+				(n1.n_name = 'ROMANIA' and n2.n_name = 'INDIA')
+				or (n1.n_name = 'INDIA' and n2.n_name = 'ROMANIA')
 			)
 			and l_shipdate between date '1995-01-01' and date '1996-12-31'
 	) as shipping
@@ -40,6 +40,4 @@ order by
 	supp_nation,
 	cust_nation,
 	l_year;
-set rowcount -1
-go
 

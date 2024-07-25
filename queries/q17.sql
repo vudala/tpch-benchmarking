@@ -1,4 +1,4 @@
--- using 1721416318 as a seed to the RNG
+-- using 1433771997 as a seed to the RNG
 
 
 select
@@ -8,16 +8,14 @@ from
 	part
 where
 	p_partkey = l_partkey
-	and p_brand = ''
-	and p_container = ''
+	and p_brand = 'Brand#52'
+	and p_container = 'LG CAN'
 	and l_quantity < (
 		select
-			0.2 * avg(l_quantity)
+			'0.2'::fixeddecimal * avg(l_quantity)
 		from
 			lineitem
 		where
 			l_partkey = p_partkey
 	);
-set rowcount -1
-go
 

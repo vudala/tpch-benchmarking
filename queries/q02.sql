@@ -1,4 +1,4 @@
--- using 1721416318 as a seed to the RNG
+-- using 1433771997 as a seed to the RNG
 
 
 select
@@ -19,11 +19,11 @@ from
 where
 	p_partkey = ps_partkey
 	and s_suppkey = ps_suppkey
-	and p_size = 
-	and p_type like '%'
+	and p_size = 38
+	and p_type like '%TIN'
 	and s_nationkey = n_nationkey
 	and n_regionkey = r_regionkey
-	and r_name = ''
+	and r_name = 'MIDDLE EAST'
 	and ps_supplycost = (
 		select
 			min(ps_supplycost)
@@ -37,13 +37,11 @@ where
 			and s_suppkey = ps_suppkey
 			and s_nationkey = n_nationkey
 			and n_regionkey = r_regionkey
-			and r_name = ''
+			and r_name = 'MIDDLE EAST'
 	)
 order by
 	s_acctbal desc,
 	n_name,
 	s_name,
-	p_partkey;
-set rowcount 100
-go
-
+	p_partkey
+LIMIT 100;

@@ -1,4 +1,4 @@
--- using 1721416318 as a seed to the RNG
+-- using 1433771997 as a seed to the RNG
 
 
 select
@@ -20,7 +20,7 @@ where
 			lineitem
 		group by
 			l_orderkey having
-				sum(l_quantity) > 
+				sum(l_quantity) > 313
 	)
 	and c_custkey = o_custkey
 	and o_orderkey = l_orderkey
@@ -32,7 +32,5 @@ group by
 	o_totalprice
 order by
 	o_totalprice desc,
-	o_orderdate;
-set rowcount 100
-go
-
+	o_orderdate
+LIMIT 100;

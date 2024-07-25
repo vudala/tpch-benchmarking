@@ -1,4 +1,4 @@
--- using 1721416318 as a seed to the RNG
+-- using 1433771997 as a seed to the RNG
 
 
 select
@@ -20,24 +20,22 @@ where
 				from
 					part
 				where
-					p_name like '%'
+					p_name like 'frosted%'
 			)
 			and ps_availqty > (
 				select
-					0.5 * sum(l_quantity)
+					0.5::fixeddecimal * sum(l_quantity)
 				from
 					lineitem
 				where
 					l_partkey = ps_partkey
 					and l_suppkey = ps_suppkey
-					and l_shipdate >= date ''
-					and l_shipdate < date '' + interval '1' year
+					and l_shipdate >= date '1994-01-01'
+					and l_shipdate < date '1994-01-01' + interval '1' year
 			)
 	)
 	and s_nationkey = n_nationkey
-	and n_name = ''
+	and n_name = 'IRAN'
 order by
 	s_name;
-set rowcount -1
-go
 

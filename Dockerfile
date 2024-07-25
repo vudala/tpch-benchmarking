@@ -30,7 +30,7 @@ RUN mv *.tbl generated_data
 
 WORKDIR /home
 # Copy additional files
-COPY dbqueries dbqueries
+COPY queries queries
 COPY schema.sql schema.sql
 COPY load_data.sql load_data.sql
 
