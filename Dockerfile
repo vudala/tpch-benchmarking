@@ -35,9 +35,12 @@ WORKDIR /home/dbgen/generated_data
 RUN for F in $(ls); do sed 's/.$//' $F > aux.tbl; cp aux.tbl $F; done;
 RUN rm aux.tbl
 
-# Copy additional files
+# Copy queries and script
 WORKDIR /home
 COPY queries queries
+COPY run_all_queries.sh run_all_queries.sh
+RUN chmod +x run_all_queries.sh
+
 COPY schema.sql schema.sql
 COPY keys.sql keys.sql
 COPY indexes.sql indexes.sql
