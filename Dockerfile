@@ -1,5 +1,7 @@
 FROM ubuntu:22.04
 
+SHELL ["/bin/bash", "-c"]
+
 USER root
 ENV DEBIAN_FRONTEND=noninteractive
 
@@ -28,10 +30,17 @@ RUN ./dbgen -s 1
 RUN mkdir generated_data
 RUN mv *.tbl generated_data
 
-WORKDIR /home
+# Remove last delimiter
+WORKDIR /home/dbgen/generated_data
+RUN for F in $(ls); do sed 's/.$//' $F > aux.tbl; cp aux.tbl $F; done;
+RUN rm aux.tbl
+
 # Copy additional files
+WORKDIR /home
 COPY queries queries
 COPY schema.sql schema.sql
+COPY keys.sql keys.sql
+COPY indexes.sql indexes.sql
 COPY load_data.sql load_data.sql
 
 # Setup entrypoint

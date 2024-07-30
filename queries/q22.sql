@@ -21,7 +21,7 @@ from
 				from
 					customer
 				where
-					c_acctbal > 0.00::fixeddecimal
+					c_acctbal > 0.00
 					and substring(c_phone from 1 for 2) in
 						('30', '24', '31', '38', '25', '34', '37')
 			)
